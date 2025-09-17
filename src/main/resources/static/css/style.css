@@ -1,0 +1,117 @@
+.greeting {
+    margin-bottom: 50px;
+    text-align: center;
+    font-size: 26px;
+    font-weight: 600;
+}
+
+/*стили появляющегося предупреждения о неверных данных*/
+.authenticationWarning {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 30px;
+    padding: 10px 5px;
+    max-width: 500px;;
+    background: red;
+    color: #f5f6fa;
+    text-align: center;
+    font-size: 20px;
+}
+
+.authMessage {
+    /*margin-bottom: 15px;*/
+    font-size: 22px;
+    /*text-align: center;*/
+}
+
+/*стили форы аутентификации*/
+form {
+    margin: 0 auto;
+    width: 600px;
+    height: max-content;
+    font-style: italic;
+}
+
+.fName {
+    margin: 0 auto 20px;
+    max-width: 400px;
+    position: relative;
+}
+
+.fName label {
+    display: block;
+    padding-left: 30px;
+    font-size: 20px;
+}
+
+.fName input {
+    display: block;
+    margin-top: 10px;
+    padding-left: 15px;
+    width: 400px;
+    height: 40px;
+    border: 2px solid #2A3F80FF;
+    border-radius: 8px;
+    font-size: 20px;
+    font-family: Tahoma sans-serif;
+}
+
+input:focus {
+    border: 5px solid #2A3F80FF;
+}
+
+/*Стили для того, чтобы показывать пароль*/
+.showPassword {
+    position: absolute;
+    top: 34px;
+    right: 10px;
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border: none;
+    background-image: url("/img/eye.svg");
+    background-position: 0 0;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+
+.showPassword.view {
+    background-image: url("/img/noEye.svg");
+}
+
+button {
+    display: block;
+    margin: 30px auto 0;
+    padding: 8px 24px;
+    width: 200px;
+    height: 45px;
+    background: #2A3F80FF;
+    color: #f5f6fa;
+    border-radius: 8px;
+    font-size: 20px;
+    text-align: center;
+    text-decoration: none;
+    font-style: normal;
+    cursor: pointer;
+}
+
+/*стиль для формы на странице auth-error.ftl*/
+/*стиль жд label на странице auth-error.ftl*/
+.remind {
+    padding-left: -30px;
+    font-size: 22px;
+    text-align: center;
+}
+
+input[type=email] {
+    display: block;
+    margin: 40px auto;
+    padding-left: 15px;
+    width: 400px;
+    height: 40px;
+    border: 2px solid #2A3F80FF;
+    border-radius: 8px;
+    font-size: 20px;
+    font-family: Tahoma sans-serif;
+}

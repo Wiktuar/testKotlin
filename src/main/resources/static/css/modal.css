@@ -1,0 +1,313 @@
+/*Анимационные стили*/
+
+/*поначалу модальное окно невидимо*/
+.modal-overlay, .modal-window {
+    opacity: 0;
+    z-index: -1;
+}
+
+/*если у элемента vmodal  есть класс .open,  то модальное окно появится*/
+.vmodal{}
+
+.vmodal.open .modal-overlay,
+.vmodal.open .modal-window {
+    opacity: 1;
+    z-index: 1000;
+}
+
+/*анимация появения модального окна и черного фона при наличии класса .open*/
+.vmodal.open .modal-window {
+    transform: translateY(100px);
+    width: fit-content;
+    padding: 15px;
+}
+
+.vmodal.open .modal-overlay {
+    background-color: rgba(0, 0, 0, .5);
+}
+
+/*стили, срабатывающие при удалении с экрана модального окна при наличии класса  .hide*/
+.vmodal.hide .modal-overlay,
+.vmodal.hide .modal-window {
+    opacity: 1;
+    z-index: 1000;
+}
+
+/*анимация исчезновения модального окна и черного фона при наличии класса .open*/
+.vmodal.hide .modal-window {
+    transform: translateY(-200px);
+    width: fit-content;
+    padding: 15px;
+}
+
+.vmodal.hide .modal-overlay {
+    background-color: rgba(0, 0, 0, 0);
+}
+
+
+/*Основные стили элементов*/
+
+/*Отвечает за черный фон*/
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /*Анимация затемнения фона*/
+    background-color: rgba(0, 0, 0, 0);
+    transition: background-color .2s ease-in;
+}
+
+/*Белое модальное окно*/
+.modal-window {
+    border-radius: 5px;
+    background: #fff;
+    margin: 0 auto;
+    /*анимация появления модального окна*/
+    transform: translateY(-200px);
+    transition: transform .2s ease-in;
+}
+
+/*Стили заголовка модального окна*/
+.vmodal-header {
+    padding: 5px 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+/*Стили текста заголовка*/
+.modal-title {
+    font-size: 1.5rem;
+}
+
+/*стиль крестика*/
+.modal-close {
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/*Стили тела модального окна*/
+.vmodal-body {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.vmodal-body p {
+    margin: 15px 35px;
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+/*стили футера модального окна*/
+.vmodal-footer {
+    display: flex;
+    justify-content: space-evenly;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-top: 1px solid #eee;
+}
+
+.vmodal-footer label {
+    min-width: 300px;
+    height: 45px;
+    display: block;
+    font-size: 20px;
+    padding: 8px 24px;
+    border-radius: 8px;
+    margin: 16px auto 0;
+    border: 0;
+    background: #e74c3c;
+    color: #f5f6fa;
+    text-align: center;
+    cursor: pointer
+}
+
+/*стили кнопок Удаления и Отмены модальньго окна по удалению стихов и музыки*/
+
+.cancel {
+    width: 35%;
+    height: 35px;
+    font-size: 1em;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    background-color: royalblue;
+    padding: 5px;
+}
+
+.delete {
+    width: 35%;
+    height: 35px;
+    font-size: 1em;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    background-color: darkred;
+    padding: 5px;
+}
+
+/*стили загруженного фото и наложенного на него холста*/
+
+.image {
+    position: relative;
+    max-width: 350px;
+}
+
+.canvas {
+    position: absolute;
+    border: 0;
+    cursor: move;
+}
+
+/*Доработать стили тела модалного окна*/
+.resultAvatar {
+    width: 350px;
+    display: flex;
+    margin-left: 30px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.resultPhoto {
+    margin: 0 auto;
+}
+
+@media (max-width: 900px) {
+    .vmodal.open .modal-window {
+        transform: translateY(2.5vh);
+        width: 100%;
+        height: 95vh;
+        padding: 0 15px 15px;
+    }
+
+    .vmodal.hide .modal-window {
+        transform: translateY(-200px);
+        width: 100%;
+        height: 95vh;
+        padding: 15px;
+    }
+
+    /*Стили заголовка модального окна*/
+    .vmodal-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 35px;
+    }
+
+    /*стиль крестика*/
+    .modal-close {
+        font-size: 2rem;
+        cursor: pointer;
+    }
+
+    /*Стили текста заголовка*/
+    .modal-title {
+        font-size: 0.8em;
+    }
+
+    /*Стили тела модального окна*/
+    .vmodal-body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 20px;
+        height: 80%;
+        width: 100%;
+        padding-top: 10px;
+        overflow: scroll;
+        background-color: yellow;
+    }
+
+
+    .previewAvatar {
+        display: flex;
+        justify-content: center;
+        height: 50%;
+        width: 100%;
+    }
+
+    .image {
+        position: relative;
+        max-width: 50%;
+        max-height: 50%;
+    }
+
+    .resultAvatar {
+        width: 100%;
+        height: 150px;
+        display: block;
+        margin-left: 0;
+    }
+
+    .resultPhoto {
+        display: block;
+        margin: 0 auto;
+        width: 150px;
+        height: 150px;
+    }
+
+    .resultAvatar h3{
+        display: none;
+    }
+
+    /*стили футера модального окна*/
+    .vmodal-footer {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        padding-top: 0;
+        padding-bottom: 0;
+        border-top: none;
+    }
+
+    .vmodal-footer label {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-width: 100%;
+        height: 25px;
+        font-size: 1em;
+        border-radius: 8px;
+        margin: 0;
+        border: 0;
+        background: #e74c3c;
+        color: #f5f6fa;
+        cursor: pointer
+    }
+
+    /* Buttons */
+    .answer_btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 25px;
+        font-size: 1em;
+        padding: 0;
+        border-radius: 8px;
+        margin: 0;
+        border: none;
+        background: #e74c3c;
+        color: #f5f6fa;
+        cursor: pointer;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

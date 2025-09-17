@@ -1,0 +1,68 @@
+h1 {
+    margin-bottom: 40px;
+    text-align: center;
+    font-size: 26px;
+    font-family: Tahoma Verdana, serif;
+    font-weight: bold;
+}
+
+.fName {
+    margin: 0 auto 40px;
+    max-width: 600px;
+    position: relative;
+}
+
+label {
+    display: block;
+    margin-bottom: 15px;
+    font-size: 22px;
+}
+
+input {
+    width: 100%;
+    height: 40px;
+    display: block;
+    margin: 0 auto;
+    padding-left: 10px;
+    border: 2px solid #2A3F80FF;
+    border-radius: 8px;
+    font-size: 20px;
+    font-family: Tahoma sans-serif;
+}
+
+input[type=checkbox] {
+    width: 40px;
+    display: inline;
+    margin-right: 20px;
+}
+
+.leader {
+    display: inline;
+}
+
+input[type=submit] {
+    width: 230px;
+    display: block;
+    margin: 30px auto 0;
+    padding: 8px 24px;
+    font-size: 20px;
+    text-align: center;
+    text-decoration: none;
+    background: #2A3F80FF;
+    color: #f5f6fa;
+}
+
+/*Стили для тогоб чтобы показывать пароль*/
+.showPassword {
+    position: absolute;
+    top: 39px;
+    right: 28px;
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border: none;
+    background-image: url("../img/eye.svg");
+    background-position: 0 0;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}

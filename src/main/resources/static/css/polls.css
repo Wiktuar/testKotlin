@@ -1,0 +1,188 @@
+h1 {
+    margin-bottom: 40px;
+    text-align: center;
+    font-size: 26px;
+    font-family: Tahoma Verdana, serif;
+    font-weight: bold;
+}
+
+h2 {
+    width: 60%;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 18px;
+    font-family: Tahoma Verdana, serif;
+    line-height: 1.5;
+}
+
+.survey_header {
+    margin-bottom: 30px;
+}
+
+.create_poll_container {
+    width: 800px;
+    margin: 0 auto 50px;
+}
+
+label {
+    width: 100%;
+    display: block;
+    margin: 0 auto 15px;
+    font-size: 22px;
+    text-align: center;
+}
+
+#header {
+    width: 680px;
+    height: 40px;
+    display: block;
+    margin: 0 auto 20px;
+    border: 2px solid #2A3F80FF;
+    border-radius: 8px;
+    font-size: 20px;
+    font-family: Tahoma sans-serif;
+}
+
+.survey {
+    position: relative;
+    width: 700px;
+    margin: 0 auto 40px;
+    background-color: #F3F6F9;
+    padding: 20px 10px;
+}
+
+.cross {
+    position: absolute;
+    left: 660px;
+    top: -5px;
+    width: 40px;
+    opacity: .3;
+    cursor: pointer;
+}
+
+.cross:hover {
+    opacity: 1;
+}
+
+textarea {
+    width: 100%;
+    height: 200px;
+    margin-top: 10px;
+    padding: 10px;
+    text-align: justify;
+    border: 1px solid #2A3F80FF;
+    resize: none;
+    font-size: 20px;
+    font-family: Tahoma sans-serif;
+}
+
+.opinion_block {
+    margin: 35px auto;
+}
+
+.opinion {
+    width: 100%;
+    height: 40px;
+    display: block;
+    margin: 0 auto;
+    padding: 5px;
+    border: 2px solid #2A3F80FF;
+    border-radius: 8px;
+    font-size: 20px;
+    font-family: Tahoma sans-serif;
+}
+
+button {
+    display: block;
+    margin: 30px auto;
+    padding: 8px 24px;
+    background: #2A3F80FF;
+    color: #f5f6fa;
+    border-radius: 8px;
+    font-size: 20px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.publish, .personal {
+    width: fit-content;
+    margin: 20px auto;
+    padding: 10px 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid blue;
+}
+
+.publish label, .personal > label {
+    width: fit-content;
+    margin: 0 5px;
+    display: inline-block;
+}
+
+#published, #personal {
+    accent-color: #C56FFF;
+    width: 20px;
+    height: 20px;
+}
+
+/*стили результата опроса*/
+.survey_results {
+    width: 70%;
+    margin: 0 auto;
+}
+
+.survey_results_block {
+    width: 100%;
+    margin: 0 auto 40px;
+    background-color: #F3F6F9;
+    padding: 20px 10px;
+}
+
+.opinion_result_block {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.opinion_result_outer {
+    position: relative;
+    width: 80%;
+    height: 30px;
+    text-align: center;
+}
+
+.opinion_result_inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    height: 30px;
+}
+
+.opinion_result_inner2 {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    position: absolute;
+    z-index: 20;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 30px;
+}
+
+.percent {
+    width: 20%;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.poll_people {
+    max-height: 0;
+    width: 60%;
+    margin: 0 auto;
+    overflow: hidden;
+}
