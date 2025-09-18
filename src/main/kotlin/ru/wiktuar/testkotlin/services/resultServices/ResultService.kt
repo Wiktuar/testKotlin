@@ -2,6 +2,9 @@ package ru.wiktuar.testkotlin.services.resultServices
 
 import jakarta.servlet.http.HttpServletResponse
 import jakarta.transaction.Transactional
+import org.apache.poi.ss.usermodel.BorderStyle
+import org.apache.poi.ss.usermodel.CellStyle
+import org.apache.poi.ss.util.RegionUtil
 import org.apache.poi.xssf.usermodel.XSSFCellStyle
 import org.apache.poi.xssf.usermodel.XSSFWorkbook
 import org.springframework.beans.factory.annotation.Autowired
@@ -83,8 +86,6 @@ class ResultService {
         headerStyle.setFont(createFont(workbook, fontSize = 16, bold = true))
         totalStyle.setFont(createFont(workbook, italic = true))
 
-        println(resultPollDTO.header)
-
 //      создание объединенной верхней строки
         mergeCells(sheet, listOfPollHeader.size, "Результаты опроса \"${resultPollDTO.header}\"", headerStyle, 0, 0, 0, 2, 0)
 
@@ -99,11 +100,21 @@ class ResultService {
             }
         }
 
+        createRowTotalVoters(sheet, arrayOf("Всего проголосовало", resultPollDTO.countVoters.toString()), totalStyle, sheet.lastRowNum+1, sheet.lastRowNum+1, 1, 2, sheet.lastRowNum+1)
+
         sheet.setColumnWidth(0, 60*256)
         sheet.setColumnWidth(1, 20*256)
         sheet.setColumnWidth(2, 14*256)
 
-        val fileName = "pollExcel.xlsx"
+        val mergedRegions = sheet.mergedRegions
+        mergedRegions.forEach {
+            RegionUtil.setBorderTop(BorderStyle.THIN, it, sheet);
+            RegionUtil.setBorderLeft(BorderStyle.THIN, it, sheet);
+            RegionUtil.setBorderRight(BorderStyle.THIN, it, sheet);
+            RegionUtil.setBorderBottom(BorderStyle.THIN, it, sheet);
+        }
+
+        val fileName = "234.xlsx"
         response.setHeader("Content-disposition", "attachment; filename=$fileName");
         response.contentType = "APPLICATION/OCTET-STREAM"
         workbook.write(response.outputStream)
@@ -113,9 +124,6 @@ class ResultService {
     @Transactional
     fun savePollResult(data: Map<Int, Int>, principal: Principal) {
         data.forEach { (k, v) ->
-//        for ((key, value) in data) { // Декомпозиция пары
-//            println("Ключ: $key, Значение: $value")
-//        }
             run {
                 if (k == 0) {
                     val voter = Voter()

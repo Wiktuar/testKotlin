@@ -128,7 +128,7 @@ button {
 }
 
 /*стили результата опроса*/
-.survey_results {
+.poll_results {
     width: 70%;
     margin: 0 auto;
 }
@@ -185,4 +185,10 @@ button {
     width: 60%;
     margin: 0 auto;
     overflow: hidden;
+}
+
+.countVoters, .message {
+    font-size: 22px;
+    font-weight: 700;
+    text-align: center;
 }

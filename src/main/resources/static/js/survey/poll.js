@@ -24,9 +24,9 @@ export class Poll {
         return this._pollObj.id
     }
 
-    getNextSurvey(){
+    getNextSurvey(node){
         if (this._index === this._pollObj.surveys.length){
-           this.sendResult()
+           this.sendResult(node)
         }
         return this._pollObj.surveys[this._index++]
     }
@@ -36,12 +36,10 @@ export class Poll {
     }
 
     checkIndex(){
-        console.log(this._pollObj.surveys.length)
-        console.log(this._index)
         return this._pollObj.surveys.length - this._index === 1
     }
 
-    sendResult(){
+    sendResult(node){
         const plainObject = Object.fromEntries(this.getResultMap());
         fetch("/savepollresult", {
             method: 'POST',
@@ -51,7 +49,12 @@ export class Poll {
             body: JSON.stringify(plainObject)
         }).then(response => {
             if(response.status === 200){
-                window.location.reload()
+                node.innerHTML = `
+                    <div class="poll_result">
+                       <img src="/img/check mark.jpg" alt="Картинка опроса">
+                       <p>Благодарим за участие! Ваш голос будет услышан</p> 
+                    </div> 
+                `;
             }
         })
     }

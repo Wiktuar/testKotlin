@@ -73,5 +73,18 @@ fun mergeCells(sheet: Sheet, size: Int, value: String, cellStyle: CellStyle,
     row.height = (row.height*3).toShort()
 
     val mergedRegion = CellRangeAddress(fRow, lRow, fCol, lCol)
-    sheet.addMergedRegion(mergedRegion);
+    sheet.addMergedRegion(mergedRegion)
+}
+
+fun createRowTotalVoters(sheet: Sheet, values: Array<String>, cellStyle: CellStyle, fRow: Int, lRow: Int, fCol: Int, lCol: Int, rowNumber: Int){
+    val row = sheet.createRow(rowNumber)
+    for(n in 0 until values.size){
+        row.createCell(n)
+        val cell = row.getCell(n)
+        cell.setCellValue(values[n])
+        cell.cellStyle = cellStyle
+    }
+    row.height = (row.height*3).toShort()
+    val mergedRegion = CellRangeAddress(fRow, lRow, fCol, lCol)
+    sheet.addMergedRegion(mergedRegion)
 }

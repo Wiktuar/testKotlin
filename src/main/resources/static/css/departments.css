@@ -160,3 +160,19 @@ input {
     cursor: pointer;
     opacity: 1;
 }
+
+/*стили для результата*/
+.poll_result {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.poll_result img {
+    width: 250px;
+}
+
+.poll_result p {
+    font-size: 22px;
+}

@@ -1,14 +1,17 @@
-import {showHTMLBlock} from "../departments.js";
+// import {showHTMLBlock} from "../departments.js";
 
 window.addEventListener("DOMContentLoaded", getResults)
-window.addEventListener("DOMContentLoaded", getPollPeople)
+// window.addEventListener("DOMContentLoaded", getPollPeople)
 
-const resultsBlock = document.querySelector(".survey_results")
+const resultsBlock = document.querySelector(".poll_results")
 
 async function getResults(){
     const data = await fetch(`/get-list-results/${pollId}`)
     const result = await data.json()
     renderPoll(result)
+    addHTML(result.countVoters)
+    const btn = document.querySelector(".download_results")
+    btn.addEventListener("click", () => downloadPollResults(result.id, result.header, btn))
 }
 
 function renderPoll(result){
@@ -67,5 +70,32 @@ async function getPollPeople(){
     })
 }
 
-showHTMLBlock(btn, block)
+// showHTMLBlock(btn, block)
+
+// функция добавляет в конец блока результатов опроса HTML код
+function addHTML(data, pollId){
+    resultsBlock.insertAdjacentHTML("beforeend",
+        `
+                <p class="countVoters">В опросе приняло участие ${data} человек</p>
+                <button type="button" class="download_results">Выгрузить результаты</button>              
+            `)
+}
+
+async function downloadPollResults(pollId, header, btn){
+    const response = await fetch(`/convert_poll_to_excel/${pollId}`)
+    const blob = await response.blob()
+    const blobUrl = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = blobUrl;
+    a.download = `${header}.xlsx`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    window.URL.revokeObjectURL(blobUrl);
+
+    const message = document.createElement("p")
+    message.classList.add("message")
+    message.textContent = "Файл результатов успешно загружен"
+    btn.before(message)
+}
 

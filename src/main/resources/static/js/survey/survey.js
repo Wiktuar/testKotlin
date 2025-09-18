@@ -121,7 +121,7 @@ async function createSurveyBlock(e){
         nextBtn.type = "button"
         nextBtn.textContent = "Далее"
         nextBtn.disabled = true
-        nextBtn.addEventListener("click", () => render(poll.checkIndex(), surveyBlock, poll.getNextSurvey(), resultMap))
+        nextBtn.addEventListener("click", () => render(poll.checkIndex(), surveyBlock, poll.getNextSurvey(nextBtn.parentNode), resultMap))
         wrapper.appendChild(nextBtn)
 
         render(poll.checkIndex(), surveyBlock, poll.getNextSurvey(), resultMap)

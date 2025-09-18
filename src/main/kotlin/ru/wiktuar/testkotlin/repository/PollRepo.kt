@@ -14,7 +14,7 @@ import ru.wiktuar.testkotlin.entities.survey.Status
 @Repository
 interface PollRepo : JpaRepository<Poll, Int> {
 
-    @Query("select new ru.wiktuar.testkotlin.dto.ResultPollDTO(p.id, p.header) from Poll p where p.id = :id")
+    @Query("select distinct new ru.wiktuar.testkotlin.dto.ResultPollDTO(p.id, p.header, size(p.voters)) from Poll p inner join p.voters where p.id = :id")
     fun getResultPollDTO(@Param("id")id : Int): ResultPollDTO
 
     @Query("select new ru.wiktuar.testkotlin.dto.PublishPolDTO(p.id, p.header) from Poll p  where p.status = :status")

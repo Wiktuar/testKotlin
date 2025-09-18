@@ -7,7 +7,6 @@ showHTMLBlock(addDepBtn, depForm)
 
 // функция появления блока HTML кода
 export function showHTMLBlock(btn, block){
-    console.log(btn)
     btn.addEventListener("click", function () {
         if(+block.style.maxHeight === 0) {
             block.style.maxHeight = block.scrollHeight + 'px';

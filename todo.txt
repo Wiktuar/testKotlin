@@ -1,0 +1,46 @@
+не работает функционал добавления подразделений. Поправить
+
+create table if not exists public.polls
+(
+    id            smallserial primary key,
+    header        text        not null,
+    department_id integer
+        references public.departments,
+    status        varchar(10) not null,
+    personal      boolean     not null
+);
+
+
+create table if not exists public.opinions
+(
+    id        smallserial
+        primary key,
+    text      text not null,
+    survey_id smallint
+);
+
+create table if not exists public.surveys
+(
+    id      smallint primary key,
+    topic   text not null,
+    poll_id integer
+        references public.polls
+);
+
+create table if not exists public.likes
+(
+    id         serial
+        primary key,
+    opinion_id integer
+        references public.opinions,
+    survey_id  integer
+);
+
+
+create table if not exists public.voters
+(
+    id      smallserial
+        primary key,
+    login   varchar(50) not null,
+    poll_id integer
+);

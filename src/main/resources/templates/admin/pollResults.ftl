@@ -16,11 +16,11 @@
     <@c.header></@c.header>
 
     <div class="container">
-        <div class="survey_results">
-            <button type="button" class="poll_people_btn">Проголосовавшие</button>
-            <div class="poll_people">
+        <div class="poll_results">
+<#--            <button type="button" class="poll_people_btn">Проголосовавшие</button>-->
+<#--            <div class="poll_people">-->
 
-            </div>
+<#--            </div>-->
         </div>
     </div>
 
@@ -30,6 +30,6 @@
 <script>
     let pollId = ${pollId}
 </script>
-<script src="/js/survey/results.js"></script>
+<script type="module" src="/js/survey/results.js"></script>
 </body>
 </html>

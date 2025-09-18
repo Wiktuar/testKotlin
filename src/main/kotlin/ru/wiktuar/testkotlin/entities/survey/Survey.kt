@@ -7,8 +7,8 @@ import jakarta.persistence.*
 @Table(name = "surveys")
 class Survey {
     @Id
-    @SequenceGenerator(name = "vote_local_seq", sequenceName = "votes_id_seq", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "vote_local_seq")
+    @SequenceGenerator(name = "survey_local_seq", sequenceName = "surveys_id_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "survey_local_seq")
     var id: Int = 0
 
     @Column(name = "topic")
