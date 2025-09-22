@@ -57,6 +57,6 @@
 <script src="/js/modal/plugins/modal.js"></script>
 <script src="/js/modal/plugins/confirm.js"></script>
 
-<script src="/js/departments.js"></script>
+<script type="module" src="/js/departments.js"></script>
 </body>
 </html>

@@ -26,7 +26,7 @@ class Test {
 //  эта аннотация необходима, чтобы отработал метод TestJsonController.getTestForUpdate()
 //  иначе он не может создать JSON представление объекта Test
     @JsonIgnore
-    @OneToMany(fetch = FetchType.LAZY, cascade = [CascadeType.ALL], orphanRemoval = true)
+    @OneToMany(fetch = FetchType.LAZY, cascade = [CascadeType.PERSIST, CascadeType.REMOVE], orphanRemoval = true)
     @JoinColumn(name = "test_id")
-    val results: MutableList<Result?> = ArrayList()
+    var results: MutableList<Result> = ArrayList()
 }

@@ -97,5 +97,7 @@ async function downloadPollResults(pollId, header, btn){
     message.classList.add("message")
     message.textContent = "Файл результатов успешно загружен"
     btn.before(message)
+    btn.classList.add("clicked")
+    btn.disabled = true
 }
 

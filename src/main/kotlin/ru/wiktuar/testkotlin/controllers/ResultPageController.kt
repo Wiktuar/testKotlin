@@ -20,7 +20,7 @@ class ResultPageController {
     @GetMapping("/results/{id}")
     fun getResultsPage(@PathVariable("id") id: Int,
                        model: Model): String {
-        val test = testService.getTestWithResults(id);
+        val test = testService.getTestWithResults(id)
         model.addAttribute("test", test)
         return "admin/results"
     }

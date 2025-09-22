@@ -31,7 +31,7 @@ class ExcelController {
     @GetMapping("/convert_poll_to_excel/{id}")
     fun getPollExcelFile(@PathVariable("id") pollId: Int,
                          response: HttpServletResponse) {
+        println("cоздаем excel файл")
         resultService.getExcelPollResults(pollId, response)
-//        return ResponseEntity("Файл загружен", HttpStatus.OK)
     }
 }

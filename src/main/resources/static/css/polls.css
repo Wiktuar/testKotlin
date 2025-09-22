@@ -188,7 +188,17 @@ button {
 }
 
 .countVoters, .message {
+    margin-bottom: 20px;
     font-size: 22px;
     font-weight: 700;
     text-align: center;
+}
+
+.message {
+    color: red;
+}
+
+.download_results.clicked {
+    opacity: .3;
+    cursor: not-allowed;
 }

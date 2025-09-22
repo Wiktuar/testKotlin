@@ -15,15 +15,9 @@ class TestJsonController {
     @Autowired
     lateinit var testService: TestService
 
-    @Autowired
-    lateinit var depService: DepService
-
     @PostMapping("/testjson")
     fun sendData(@RequestBody testDTO: TestDTO): String {
-        val department = depService.getDepartmentById(testDTO.depId);
-        val test: Test = testDTO.test
-        test.department = department;
-        testService.saveTest(test);
+        testService.saveTest(testDTO);
         return "/admin/courses/${testDTO.depId}"
     }
 
@@ -32,7 +26,6 @@ class TestJsonController {
     fun getTestForUpdate(@PathVariable("id") id: Int,
                          request: HttpServletRequest): ResponseEntity<Test> {
         val test = testService.getTest(id)
-        println(request.getHeader("referer"))
         return ResponseEntity.ok()
             .header("X-Total-Count", test.questions.size.toString())
             .body(test)

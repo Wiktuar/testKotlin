@@ -20,7 +20,7 @@ export function saveTest(){
     test.questions = questions;
 
     testDTO.test = test;
-    fetch("/sbilearn/testjson", {
+    fetch("/testjson", {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

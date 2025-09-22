@@ -14,4 +14,6 @@ interface ResultRepo : JpaRepository<Result, Int> {
             "r.firstName, r.result, r.message, r.timeStamp) from Result r where r.testId = :id")
     fun getExcelResultDTO(@Param("id") id: Int): List<ExcelResultDTO>
 
+//  метод получения результатов теста по его ID. Необхоим для обновления теста
+    fun getResultsByTestId(id:Int): MutableList<Result>
 }

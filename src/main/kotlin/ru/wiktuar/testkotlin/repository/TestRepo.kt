@@ -13,7 +13,7 @@ interface TestRepo : JpaRepository<Test, Int> {
     @Query("from Test t join fetch t.questions join fetch t.department where t.id = :id")
     fun getTest(@Param("id") id: Int): Test;
 
-    @Query("from Test t join fetch t.results where t.id = :id")
+    @Query("from Test t left join fetch t.results where t.id = :id")
     fun getTestWithResults(@Param("id") id: Int): Test;
 
     @Query("select t.header from Test t where t.id = :id")

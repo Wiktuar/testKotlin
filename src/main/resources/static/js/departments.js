@@ -1,7 +1,5 @@
 const addDepBtn = document.querySelector(".add_dep_btn");
 const depForm = document.querySelector("#dep_form");
-const addSurveyBtn = document.querySelector(".add_survey_btn");
-const surveyForm = document.querySelector("#survey_form");
 
 showHTMLBlock(addDepBtn, depForm)
 

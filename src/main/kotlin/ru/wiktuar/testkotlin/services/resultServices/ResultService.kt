@@ -8,6 +8,7 @@ import org.apache.poi.ss.util.RegionUtil
 import org.apache.poi.xssf.usermodel.XSSFCellStyle
 import org.apache.poi.xssf.usermodel.XSSFWorkbook
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.context.ApplicationContext
 import org.springframework.stereotype.Service
 import ru.wiktuar.testkotlin.entities.survey.Like
 import ru.wiktuar.testkotlin.entities.survey.Voter
@@ -22,6 +23,9 @@ import java.security.Principal
 @Service
 class ResultService {
     @Autowired
+    private lateinit var context: ApplicationContext
+
+    @Autowired
     lateinit var resultRepo: ResultRepo
 
     @Autowired
@@ -33,8 +37,8 @@ class ResultService {
     @Autowired
     private lateinit var likeRepo: LikeRepo
 
-    @Autowired
-    private lateinit var voterRepo: VoterRepo
+//    @Autowired
+//    private lateinit var voterRepo: VoterRepo
 
     val listOfTestHeader = listOf("Имя", "Результат", "Процент", "Дата")
     val listOfPollHeader = listOf("Мнение", "Кол-во человек", "Процент")
@@ -129,7 +133,8 @@ class ResultService {
                     val voter = Voter()
                     voter.login = principal.name
                     voter.pollId = v
-                    voterRepo.save(voter)
+                    val vRepo = context.getBean(VoterRepo::class.java)
+                    vRepo.save(voter)
                 } else {
                     val like = Like()
                     like.like = v
