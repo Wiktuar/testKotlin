@@ -2,7 +2,7 @@ package ru.wiktuar.testkotlin.services
 
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
-import ru.wiktuar.testkotlin.entities.Course
+import ru.wiktuar.testkotlin.entities.courses.Course
 import ru.wiktuar.testkotlin.repository.CourseRepo
 
 @Service

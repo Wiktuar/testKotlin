@@ -44,3 +44,12 @@ create table if not exists public.voters
     login   varchar(50) not null,
     poll_id integer
 );
+
+
+create table uploads(
+   id      smallserial primary key,
+   name    varchar(70) not null,
+   url    varchar(90) not null,
+   course_id int
+        references public.courses
+);

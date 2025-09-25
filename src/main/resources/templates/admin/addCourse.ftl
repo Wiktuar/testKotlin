@@ -26,7 +26,11 @@
             <div class="preview"></div>
             <label for="mytextarea">Текст материала</label>
             <textarea id="mytextarea"></textarea>
+            <input type="file" id="file" multiple>
         </form>
+
+        <label for="file" class="file">Загрузить файл</label>
+        <span class="file_name">Файл не выбран</span>
         <button class="get-data">Отправить</button>
         <button class="preview_btn">Предпросмотр</button>
     </div>
@@ -40,5 +44,6 @@
 
 <script src="/js/tinymce/tinymce.min.js"></script>
 <script src="/js/app.js"></script>
+<script src="/js/uploadFile.js"></script>
 </body>
 </html>

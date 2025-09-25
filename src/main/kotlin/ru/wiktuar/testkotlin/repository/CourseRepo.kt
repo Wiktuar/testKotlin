@@ -4,7 +4,7 @@ import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.data.jpa.repository.Query
 import org.springframework.data.repository.query.Param
 import org.springframework.stereotype.Repository
-import ru.wiktuar.testkotlin.entities.Course
+import ru.wiktuar.testkotlin.entities.courses.Course
 
 @Repository
 interface CourseRepo : JpaRepository<Course, Int>{

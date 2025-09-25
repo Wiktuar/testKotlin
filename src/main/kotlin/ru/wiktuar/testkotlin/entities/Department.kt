@@ -2,6 +2,7 @@ package ru.wiktuar.testkotlin.entities
 
 import com.fasterxml.jackson.annotation.JsonIgnore
 import jakarta.persistence.*
+import ru.wiktuar.testkotlin.entities.courses.Course
 import ru.wiktuar.testkotlin.entities.survey.Poll
 import ru.wiktuar.testkotlin.entities.test.Test
 

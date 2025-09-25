@@ -6,10 +6,9 @@ import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
-import ru.wiktuar.testkotlin.entities.Course
+import ru.wiktuar.testkotlin.entities.courses.Course
 import ru.wiktuar.testkotlin.entities.Department
 import ru.wiktuar.testkotlin.entities.survey.Poll
-import ru.wiktuar.testkotlin.entities.survey.Survey
 import ru.wiktuar.testkotlin.entities.test.Test
 import ru.wiktuar.testkotlin.services.CourseService
 import ru.wiktuar.testkotlin.services.DepService

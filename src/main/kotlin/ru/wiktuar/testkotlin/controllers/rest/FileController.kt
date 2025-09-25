@@ -25,8 +25,6 @@ class FileController {
 
         try {
             file.transferTo(destFile.toPath())
-            println("Файл успешно записан $destFile")
-            println("Путь для визуального редактора $imagePath")
         } catch (e: IOException) {
             println(e)
         }
