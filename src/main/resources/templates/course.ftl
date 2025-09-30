@@ -21,15 +21,13 @@
             <div>${course.text}</div>
         </div>
         <div class="additional">
-            <h2>Дополнительные материалы</h2>
             <#if course.uploads?has_content>
+                <h2>Дополнительные материалы</h2>
                 <#list course.uploads as upload>
                 <a href="${upload.url}" class="download_link" download>${upload.name}</a>
-            </#list>
+                </#list>
             <#else>
-                <div class="empty_list">
-                    Дополнительные материалы пока отсутствуют
-                </div>
+
             </#if>
         </div>
         <div class="back"><a href="${request}">К списку всех курсов</a></div>

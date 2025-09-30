@@ -27,7 +27,7 @@ class NvcConfig : WebMvcConfigurer {
         registry.addResourceHandler("/img/**")
             .addResourceLocations("classpath:/static/img/");
 
-        registry.addResourceHandler(("/upload/**"))
+        registry.addResourceHandler(("/uploads/**"))
             .addResourceLocations("file://$uploadPath/")
     }
 

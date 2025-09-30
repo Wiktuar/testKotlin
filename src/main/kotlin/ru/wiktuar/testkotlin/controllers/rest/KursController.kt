@@ -14,37 +14,18 @@ import java.io.File
 @RestController
 class KursController {
 
-    @Value("\${upload.pathW}")
-    private lateinit var writePath: String
-
-    @Autowired
-    private lateinit var uploadRepo: UploadRepo
-
     @Autowired
     private lateinit var courseService: CourseService
-
-    @Autowired
-    private lateinit var depService: DepService
 
     //  метод сохранения нового курса
     @PostMapping("/savecourse")
     fun saveCourse(
         @ModelAttribute course: Course,
         @RequestParam("depId") depId: Int,
-        @RequestParam("file", required = false) files: Array<MultipartFile>?
+        @RequestParam("file", required = false) files: Array<MultipartFile>?,
+        @RequestParam("fileNames", required = false) fileNames: Array<String>?
     ): String {
-        if(files != null){
-            for(file in files){
-                val upload = Upload()
-                val destFile: File = File(writePath + file.originalFilename)
-                upload.url = "/upload/" + file.originalFilename
-                upload.name = file.originalFilename.toString()
-                file.transferTo(destFile.toPath())
-                course.addUploads(upload)
-            }
-        }
-        course.setDepartment(depService.getDepartmentById(depId))
-        courseService.saveCourse(course)
+        courseService.saveCourse(course, depId, files, fileNames)
         return String.format("/admin/courses/%d", depId)
     }
 

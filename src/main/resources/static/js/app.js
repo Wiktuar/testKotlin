@@ -1,6 +1,10 @@
 // получение элементов страницы
 const button = document.querySelector(".get-data");
 const previewBtn = document.querySelector(".preview_btn");
+const preloadFiles = document.querySelector(".preload_files")
+
+// cписок потребуется для отправки имен удаленных файлов
+const removeNamesList = []
 
 const pageHeader = document.getElementById("pageHeader");
 const depId = document.querySelector("input[name=depId]");
@@ -14,6 +18,13 @@ let text = updateCourse(cid);
 function MCEInit(){
     tinymce.init ({
         selector: '#mytextarea',
+        setup: function (editor) {
+            editor.on('init', function (e) {
+                if(cid !== 0){
+                    text.then(data => editor.setContent(data));
+                }
+            }); 
+        },
         license_key: 'gpl',
         language: 'ru',
         height: 400,
@@ -71,6 +82,16 @@ async function updateCourse(courseId){
         depId.value = course.department.id;
         id.value = course.id;
         header.value = course.header;
+        if(course.uploads.length > 0){
+            for (let i = 0; i < course.uploads.length; i++){
+                preloadFiles.insertAdjacentHTML("beforeend",
+            `<div class="preload_file">
+                        <p class="preload_file_name">${course.uploads[i].name}</p>
+                        <img src="/img/cross.png" class="cross" alt="крестик для удаления файлов">
+                    </div>`
+                )
+            }
+        }
         return course.text;
     }
 }
@@ -85,13 +106,20 @@ button.addEventListener("click", (e) => {
     formData.append("text", tinymce.activeEditor.getContent());
     formData.append("depId", depId.value);
 
+    if(removeNamesList){
+        for(let i = 0; i< removeNamesList.length; i++){
+            // console.log(removeNamesList[i])
+            formData.append("fileNames", removeNamesList[i])
+        }
+    }
+
     if(file.files){
         for(let i = 0; i< file.files.length; i++){
             formData.append("file", file.files[i])
         }
     }
 
-
+    console.log(formData.getAll("fileNames"))
     fetch("/savecourse", {
         method: 'post',
         body: formData
@@ -106,4 +134,13 @@ previewBtn.addEventListener("click", () => {
         behavior: 'smooth',
         block: 'start'
     });
+})
+
+// событие удаление файла из списка уже загруженных файлов
+preloadFiles.addEventListener("click", (e) => {
+    if(e.target.classList.contains("cross")){
+        let data = e.target.parentNode.querySelector(".preload_file_name").textContent
+        removeNamesList.push(data)
+        preloadFiles.removeChild(e.target.parentNode);
+    }
 })

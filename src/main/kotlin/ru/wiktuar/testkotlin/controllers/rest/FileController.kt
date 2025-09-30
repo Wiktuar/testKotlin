@@ -1,11 +1,13 @@
 package ru.wiktuar.testkotlin.controllers.rest
 
 import jakarta.servlet.http.HttpServletResponse
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 import org.springframework.web.multipart.MultipartFile
+import ru.wiktuar.testkotlin.repository.UploadRepo
 import java.io.File
 import java.io.IOException
 import java.nio.file.Files
@@ -17,6 +19,9 @@ class FileController {
 
     @Value("\${upload.pathW}")
     lateinit var writePath: String
+
+    @Autowired
+    lateinit var uploadRepo: UploadRepo
 
     @PostMapping("/upload")
     fun getFile(@RequestParam("file") file: MultipartFile): ResponseEntity<String> {
@@ -34,7 +39,6 @@ class FileController {
     @GetMapping("/download/{filename}")
     fun downloadFile(@PathVariable("filename") fileName: String, response: HttpServletResponse): String {
         val file = Paths.get(writePath + fileName)
-
         if (Files.exists(file)) {
             response.setHeader("Content-disposition", "attachment; filename=$fileName");
             response.contentType = "APPLICATION/OCTET-STREAM"
@@ -42,5 +46,12 @@ class FileController {
             response.outputStream.flush()
         }
         return "ok"
+    }
+
+//  метод проверки предсуществования файла с таким же названием
+    @PostMapping("/is_file_exists")
+    fun isFileExists(@RequestParam("fileName") filename: String): Boolean{
+        println("Name of file $filename")
+        return uploadRepo.existsUploadByName(filename)
     }
 }

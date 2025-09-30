@@ -29,6 +29,16 @@
             <input type="file" id="file" multiple>
         </form>
 
+<#--    сюда будут отображаться уже загруженные файлы при обновлении материала    -->
+        <div class="preload_files">
+
+        </div>
+
+<#--    сюда будет выводиться предупреждение о наличии файла с похожим именем    -->
+        <div class="warning">
+
+        </div>
+
         <label for="file" class="file">Загрузить файл</label>
         <span class="file_name">Файл не выбран</span>
         <button class="get-data">Отправить</button>
