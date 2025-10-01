@@ -5,7 +5,7 @@ import jakarta.persistence.*
 
 @Entity
 @Table(name = "surveys")
-class Survey {
+class   Survey {
     @Id
     @SequenceGenerator(name = "survey_local_seq", sequenceName = "surveys_id_seq", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "survey_local_seq")
@@ -14,7 +14,10 @@ class Survey {
     @Column(name = "topic")
     var topic: String? = null
 
-    @OneToMany(fetch = FetchType.EAGER, cascade = [CascadeType.ALL])
+//    @OneToMany(mappedBy = "survey", fetch = FetchType.EAGER, cascade = [CascadeType.ALL], orphanRemoval = true)
+//    val opinions: List<Opinion> = mutableListOf()
+
+    @OneToMany(fetch = FetchType.EAGER, cascade = [CascadeType.ALL], orphanRemoval = true)
     @JoinColumn(name = "survey_id")
     val opinions: List<Opinion> = mutableListOf()
 }

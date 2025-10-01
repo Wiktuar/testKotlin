@@ -1,5 +1,6 @@
 package ru.wiktuar.testkotlin.controllers.rest
 
+import jakarta.servlet.http.HttpServletRequest
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -9,6 +10,7 @@ import ru.wiktuar.testkotlin.dto.PublishPolDTO
 import ru.wiktuar.testkotlin.dto.ResultPollDTO
 import ru.wiktuar.testkotlin.entities.survey.Poll
 import ru.wiktuar.testkotlin.entities.survey.Status
+import ru.wiktuar.testkotlin.entities.test.Test
 import ru.wiktuar.testkotlin.repository.VoterRepo
 import ru.wiktuar.testkotlin.services.PollService
 import ru.wiktuar.testkotlin.services.SurveyService
@@ -61,5 +63,14 @@ class PollJsonController {
     @ResponseBody
     fun getSurveysByPollId(@PathVariable("id") id: Int): ResultPollDTO {
         return pollService.getResultPollDTO(id);
+    }
+
+//  метод получения опроса для его обновления
+    @GetMapping("/admin/update/poll/{id}")
+    fun getTestForUpdate(@PathVariable("id") id: Int,
+                         request: HttpServletRequest
+    ): ResponseEntity<Poll> {
+        val poll = pollService.getPollById(id)
+        return ResponseEntity.ok().body(poll)
     }
 }

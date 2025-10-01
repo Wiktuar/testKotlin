@@ -22,8 +22,12 @@ class Opinion {
 //    )
 //    var likes: List<Voter> = mutableListOf()
 
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "survey_id")
+//    var survey: Survey? = null
+
     @Column(name = "survey_id")
-    var survey: Int = 0
+    var survey: Int? = null
 
     @JsonIgnore
     @OneToMany(fetch = FetchType.LAZY, cascade = [CascadeType.ALL])

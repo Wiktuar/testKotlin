@@ -48,7 +48,6 @@ class CourseController {
         val department: Department = depService.getDepartmentWithCourses(id)
         val tests: MutableList<Test> = testService.getTestByDepartmentId(id)
         val polls: MutableList<Poll> = pollService.getPollByDepartmentId(department)
-        println(polls.size)
         department.tests = tests
         department.polls = polls
         model.addAttribute("department", department)

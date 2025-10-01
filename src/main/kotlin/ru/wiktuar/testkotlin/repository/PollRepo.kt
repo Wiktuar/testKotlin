@@ -27,4 +27,7 @@ interface PollRepo : JpaRepository<Poll, Int> {
     fun getSurveysByPollId(@Param("id") id: Int): List<SurveyDTO>
 
     abstract fun findPollByDepartment(department: Department): MutableList<Poll>
+
+    @Query("select p from Poll p join fetch p.surveys where p.id = :id")
+    fun getPollById(@Param("id") id: Int): Poll
 }

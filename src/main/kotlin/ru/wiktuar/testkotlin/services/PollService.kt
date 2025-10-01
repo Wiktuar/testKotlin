@@ -1,5 +1,6 @@
 package ru.wiktuar.testkotlin.services
 
+import jakarta.transaction.Transactional
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import ru.wiktuar.testkotlin.dto.PollDTO
@@ -28,13 +29,15 @@ class PollService {
         return pollRepo.findPollByDepartment(department)
     }
 
+    @Transactional
     fun savePoll(pollDTO: PollDTO){
         val poll = pollDTO.poll
         poll.department = depService.getDepartmentById(pollDTO.depId)
         pollRepo.save(poll)
     }
 
-//  метод получения опроса по его заголовку со всеми вопросами и мнениями
+
+    //  метод получения опроса по его заголовку со всеми вопросами и мнениями
     fun findPollByHeader(header: String): Poll {
         return pollRepo.getPollByHeader(header)
     }
@@ -53,5 +56,11 @@ class PollService {
         }
         return pollDTO
     }
+
+//  метод удаления теста по его ID
+    fun deletePollById(id: Int) = pollRepo.deleteById(id)
+
+//  метод получения опроса по его ID
+    fun getPollById(id: Int) = pollRepo.getPollById(id)
 
 }

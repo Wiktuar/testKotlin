@@ -24,7 +24,6 @@ export function getPoll(){
     poll.personal = !!(document.getElementById("personal").checked)
     poll.surveys = getSurveyWithOpinions();
     pollDTO.poll = poll
-    console.log(pollDTO)
     return pollDTO
 }
 
@@ -44,6 +43,7 @@ function getSurveyWithOpinions(){
             const opinion = {}
             opinion.id = op.querySelector("input[type=hidden]").value
             opinion.text = op.querySelector(".opinion").value
+            if(opinion.id !== 0 && opinion.text) opinion.survey = survey.id
             if(opinion.text.replace(/\s/g, '')) opinions.push(opinion)
         })
 

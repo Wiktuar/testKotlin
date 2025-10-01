@@ -40,6 +40,10 @@
 
     <@c.footer></@c.footer>
 </div>
+<script>
+    let pollId = <#if pollID??>${pollID}<#else>0</#if>;
+</script>
 <script type="module" src="/js/survey/pollConstructor.js"></script>
+<script type="module" src="/js/survey/updatePoll.js"></script>
 </body>
 </html>

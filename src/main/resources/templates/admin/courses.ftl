@@ -96,5 +96,7 @@
 
 <script src="/js/courses.js"></script>
 <script src="/js/testsConstructor/deleteTest.js"></script>
+<script src="/js/survey/modifyPoll.js"></script>
+
 </body>
 </html>
